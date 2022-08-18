@@ -13,8 +13,12 @@ public class Board {
     @GeneratedValue (strategy = GenerationType.AUTO) //1개씩 추가되는거
     @Id
     private Long id;
+sssssssssssssssssssssssssssssssssssssss
+    ssssssssssssssssssssssssssssssssssssssss
 
-    private String se = "아아아아아아아아안돼~~~~";
+    public void setSsssssssssssssssssssssssssssssssssssssss(sssssssssssssssssssssssssssssssssssssss ssssssssssssssssssssssssssssssssssssssss) {
+        this.ssssssssssssssssssssssssssssssssssssssss = ssssssssssssssssssssssssssssssssssssssss;
+    }
 
     @Column(length = 100)
     private String title;
