@@ -14,6 +14,8 @@ public class Board {
     @Id
     private Long id;
 
+    private String se = "아아아아아아아아안돼~~~~";
+
     @Column(length = 100)
     private String title;
 
