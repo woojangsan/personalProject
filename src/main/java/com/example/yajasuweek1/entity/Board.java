@@ -1,71 +1,67 @@
 package com.example.yajasuweek1.entity;
 
-import com.example.yajasuweek1.dto.RequestDto;
-import com.example.yajasuweek1.dto.UpdateRequestDto;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.yajasuweek1.dto.request.BoardRequest;
+import com.example.yajasuweek1.dto.request.UpdateRequest;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-
+import java.util.List;
 
 @Entity
-public class Board{
+public class Board {
 
-    //변수(제목, 작성자명, 내용) private 권장
-
-    //ID가 자동으로 생성 및 증가
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue (strategy = GenerationType.AUTO) //1개씩 추가되는거
     @Id
     private Long id;
+
+    @Column(length = 100)
     private String title;
+
+    @Column(nullable = false)
     private String author;
+
+    @Column(nullable = false)
     private String content;
-    @JsonIgnore
     private String password;
 
-       //생성자가 반드시 필요함 => Board board = new Board(request);를 사용하기 위해서는 생성자를 만들어 주어야함
-    public Board(RequestDto requestDto){
-        this.title = requestDto.getTitle();
-        this.author = requestDto.getAuthor();
-        this.content = requestDto.getContent();
+    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties({"board"})
+    @OrderBy("id desc")
+    private List<Comment> comments;
+
+    public Board(BoardRequest boardRequest) {
+        this.title = boardRequest.getTitle();
+        this.author = boardRequest.getAuthor();
+        this.content = boardRequest.getContent();
+        this.password = boardRequest.getPassword();
     }
 
-
-    //인스턴스가 생성 될 때 기본 생성자가 컴파일시 자동 생성되고 1개일 시에는 생략이 가능하지만
-    //매개변수가 있는 생성자를 생성하게 되어 생성자가 2개 이상일 때는 기본 생성자를 따로 적어주어야 한다
     public Board() {
 
     }
+    //생성자를 만들어준 이유는 Service 로직에서 new연산자로 객체를 생성했기 때문인데 boardRequest의 정보들을 받는다고 되어있을 때
+    //boardRequest의 멤버변수들이 private으로 선언되어 있으므로 가져오고 싶은 정보를 읽어주어야 한다 그래서 boardRequest.Get~이 필요하다
+    //BoardResponse에서도 마찬가지다
 
-
-    //private으로 선언된 변수들을 다른 클래스에서 접근하기 위해서
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public String getPassword() {
-        return password;
-    }
 
     public Long getId(){
         return id;
     }
-
-
-    public void update(UpdateRequestDto requestDto) {
-        this.content = requestDto.getContent();
-        this.title = requestDto.getTitle();
+    public String getTitle(){
+        return title;
+    }
+    public String getAuthor(){
+        return author;
+    }
+    public  String getContent(){
+        return content;
+    }
+    public  String getPassword(){
+        return password;
     }
 
-    public void delete(Long id) {
-        this.id = id;
+    public void update(UpdateRequest updateRequest) {
+       this.title = updateRequest.getTitle();
+       this.content = updateRequest.getContent();
     }
 }
-
