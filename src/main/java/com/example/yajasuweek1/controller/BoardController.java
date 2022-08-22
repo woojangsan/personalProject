@@ -24,6 +24,7 @@ public class BoardController {
     @PostMapping("/api/post")
     public BoardResponse craeteBoard(@RequestBody BoardRequest boardRequest){
         return boardService.createBoard(boardRequest);
+
     }
 
     @GetMapping("/api/post")
