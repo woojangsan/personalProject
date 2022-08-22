@@ -1,16 +1,12 @@
-package com.example.yajasuweek1.dto;
+package com.example.yajasuweek1.dto.request;
 
-
-public class RequestDto {
-    //변수
-
-
+public class BoardRequest {
     private String title;
     private String author;
     private String content;
+    private String password;
 
 
-    //생성자
 
     public String getTitle(){
         return title;
@@ -18,10 +14,10 @@ public class RequestDto {
     public String getAuthor(){
         return author;
     }
-
-
-    public String getContent() {
+    public  String getContent(){
         return content;
     }
-    //필요한 메서드 있는지
+    public  String getPassword(){
+        return password;
+    }
 }
