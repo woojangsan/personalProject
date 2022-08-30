@@ -15,4 +15,4 @@ hooks:
   ApplicationStart:
     - location: scripts/gh_deploy.sh
       timeout: 180
-      runas: ubuntu
+      runas: root
