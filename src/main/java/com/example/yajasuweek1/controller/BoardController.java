@@ -3,8 +3,6 @@ package com.example.yajasuweek1.controller;
 import com.example.yajasuweek1.dto.request.BoardRequest;
 import com.example.yajasuweek1.dto.request.UpdateRequest;
 import com.example.yajasuweek1.dto.response.BoardResponse;
-import com.example.yajasuweek1.dto.response.DeleteResponse;
-import com.example.yajasuweek1.dto.response.UpdateResponse;
 import com.example.yajasuweek1.service.BoardService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,35 +14,38 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    public BoardController(BoardService boardService){
+    public BoardController(BoardService boardService) {
         this.boardService = boardService;
 
     }
 
     @PostMapping("/api/post")
-    public BoardResponse craeteBoard(@RequestBody BoardRequest boardRequest){
-        return boardService.createBoard(boardRequest);
+    public String craeteBoard(@RequestBody BoardRequest boardRequest) {
+        boardService.createBoard(boardRequest);
+        return "등록되었습니다.";
 
     }
 
     @GetMapping("/api/post")
-    public List<BoardResponse> getBoard(){
+    public List<BoardResponse> getBoard() {
         return boardService.getBoard();
     }
 
     @GetMapping("/api/post/{id}")
-    public BoardResponse findBoardById(@PathVariable Long id){
-        return boardService.findBoardById(id);
+    public BoardResponse findBoardById(@PathVariable Long id) {
+        return boardService.getBoardById(id);
     }
 
-    @PutMapping("/api/post/{id}")
-    public UpdateResponse updateBoard(@PathVariable Long id, @RequestBody UpdateRequest updateRequest){
-        return boardService.updateBoard(id, updateRequest);
+    @PutMapping("/api/post/{specialId}")  //쿼리 스트링
+    public String updateBoard(@PathVariable Long specialId, @RequestBody UpdateRequest updateRequest) {
+        boardService.updateBoard(specialId, updateRequest);
+        return "수정되었습니다.";
     }
 
     @DeleteMapping("/api/post/{id}")
-    public String  deleteBoard(@PathVariable Long id){
+    public String deleteBoard(@PathVariable Long id) {
         boardService.deleteBoard(id);
         return "삭제되었습니다.";
     }
+
 }

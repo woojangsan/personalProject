@@ -3,34 +3,28 @@ package com.example.yajasuweek1.entity;
 import com.example.yajasuweek1.dto.request.BoardRequest;
 import com.example.yajasuweek1.dto.request.UpdateRequest;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.util.List;
 
+@Getter
 @Entity
 public class Board {
 
-    @GeneratedValue (strategy = GenerationType.AUTO) //1개씩 추가되는거
+    @GeneratedValue (strategy = GenerationType.IDENTITY) //1개씩 추가되는거
     @Id
     private Long id;
-sssssssssssssssssssssssssssssssssssssss
-    ssssssssssssssssssssssssssssssssssssssss
-
-    public void setSsssssssssssssssssssssssssssssssssssssss(sssssssssssssssssssssssssssssssssssssss ssssssssssssssssssssssssssssssssssssssss) {
-        this.ssssssssssssssssssssssssssssssssssssssss = ssssssssssssssssssssssssssssssssssssssss;
-    }
 
     @Column(length = 100)
     private String title;
-
     @Column(nullable = false)
     private String author;
-
     @Column(nullable = false)
     private String content;
     private String password;
 
-    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.  REMOVE)
     @JsonIgnoreProperties({"board"})
     @OrderBy("id desc")
     private List<Comment> comments;
@@ -50,24 +44,8 @@ sssssssssssssssssssssssssssssssssssssss
     //BoardResponse에서도 마찬가지다
 
 
-    public Long getId(){
-        return id;
-    }
-    public String getTitle(){
-        return title;
-    }
-    public String getAuthor(){
-        return author;
-    }
-    public  String getContent(){
-        return content;
-    }
-    public  String getPassword(){
-        return password;
-    }
-
-    public void update(UpdateRequest updateRequest) {
-       this.title = updateRequest.getTitle();
-       this.content = updateRequest.getContent();
+    public void edit(UpdateRequest updateRequest) {
+        this.title = updateRequest.getTitle();
+        this.content = updateRequest.getContent();
     }
 }

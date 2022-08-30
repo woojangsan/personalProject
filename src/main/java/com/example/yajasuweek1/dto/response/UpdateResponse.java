@@ -5,6 +5,8 @@ import com.example.yajasuweek1.entity.Board;
 public class UpdateResponse {
 
 
+
+
     private String title;
     private String content;
 

@@ -1,10 +1,13 @@
 package com.example.yajasuweek1.dto.response;
 
 import com.example.yajasuweek1.entity.Board;
+import com.example.yajasuweek1.entity.Comment;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
 
 import java.util.List;
 
+@Getter
 public class BoardResponse {
 
     private Long id;
@@ -14,32 +17,15 @@ public class BoardResponse {
     @JsonIgnore
     private String password;
 
+    private List<Comment> comments;
+
     public BoardResponse(Board savedBoard) {
         this.id = savedBoard.getId();
         this.title = savedBoard.getTitle();
         this.author = savedBoard.getAuthor();
         this.content = savedBoard.getContent();
         this.password = savedBoard.getPassword();
+        this.comments = savedBoard.getComments();
     }
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public String getPassword() {
-        return password;
-    }
 }
