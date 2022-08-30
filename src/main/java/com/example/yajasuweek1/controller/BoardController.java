@@ -48,4 +48,8 @@ public class BoardController {
         return "삭제되었습니다.";
     }
 
+    @GetMapping("/api/post")
+    public String test(){
+        return "안녕";
+    }
 }
