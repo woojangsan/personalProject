@@ -24,10 +24,6 @@ public class Board {
     private String content;
     private String password;
 
-    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.  REMOVE)
-    @JsonIgnoreProperties({"board"})
-    @OrderBy("id desc")
-    private List<Comment> comments;
 
     public Board(BoardRequest boardRequest) {
         this.title = boardRequest.getTitle();

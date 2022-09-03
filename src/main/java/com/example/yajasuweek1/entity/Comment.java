@@ -29,11 +29,6 @@ public class Comment{
     @ManyToOne
     private Board board;
 
-    @OneToMany(mappedBy = "comment", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-    @JsonIgnoreProperties({"comment"})
-    @OrderBy("id desc")
-    private List<Recomment> recomments;
-
 
     public Comment(Board board, CommentRequest request) {
         this.comment = request.getComment();

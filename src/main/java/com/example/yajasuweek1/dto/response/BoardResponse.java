@@ -25,7 +25,6 @@ public class BoardResponse {
         this.author = savedBoard.getAuthor();
         this.content = savedBoard.getContent();
         this.password = savedBoard.getPassword();
-        this.comments = savedBoard.getComments();
     }
 
 }
