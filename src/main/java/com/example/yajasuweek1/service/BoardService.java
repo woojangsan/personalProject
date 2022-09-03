@@ -27,7 +27,7 @@ public class BoardService {
         boardRepository.save(new Board(boardRequest));
     }
 
-    public List<BoardResponse> getBoard() {
+    public List<?> getBoard() {
         List<Board> boards = boardRepository.findAll();
         List<BoardResponse> boardResponseList = new ArrayList<>();
         for (Board board : boards){

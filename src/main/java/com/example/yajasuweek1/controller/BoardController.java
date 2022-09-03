@@ -27,7 +27,7 @@ public class BoardController {
     }
 
     @GetMapping("/api/post")
-    public List<BoardResponse> getBoard() {
+    public List<?> getBoard() {
         return boardService.getBoard();
     }
 
