@@ -1,9 +1,9 @@
 package com.example.yajasuweek1.controller;
 
-import com.example.yajasuweek1.dto.request.BoardRequest;
+import com.example.yajasuweek1.dto.request.PostRequest;
 import com.example.yajasuweek1.dto.request.UpdateRequest;
-import com.example.yajasuweek1.dto.response.BoardResponse;
-import com.example.yajasuweek1.service.BoardService;
+import com.example.yajasuweek1.dto.response.PostResponse;
+import com.example.yajasuweek1.service.PostService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,39 +12,39 @@ import java.util.List;
 @RestController
 public class BoardController {
 
-    private final BoardService boardService;
+    private final PostService postService;
 
-    public BoardController(BoardService boardService) {
-        this.boardService = boardService;
+    public BoardController(PostService postService) {
+        this.postService = postService;
 
     }
 
     @PostMapping("/api/post")
-    public String craeteBoard(@RequestBody BoardRequest boardRequest) {
-        boardService.createBoard(boardRequest);
+    public String craeteBoard(@RequestBody PostRequest postRequest) {
+        postService.createBoard(postRequest);
         return "등록되었습니다.";
 
     }
 
     @GetMapping("/api/post")
     public List<?> getBoard() {
-        return boardService.getBoard();
+        return postService.getBoard();
     }
 
     @GetMapping("/api/post/{id}")
-    public BoardResponse findBoardById(@PathVariable Long id) {
-        return boardService.getBoardById(id);
+    public PostResponse findBoardById(@PathVariable Long id) {
+        return postService.getBoardById(id);
     }
 
     @PutMapping("/api/post/{specialId}")  //쿼리 스트링
     public String updateBoard(@PathVariable Long specialId, @RequestBody UpdateRequest updateRequest) {
-        boardService.updateBoard(specialId, updateRequest);
+        postService.updateBoard(specialId, updateRequest);
         return "수정되었습니다.";
     }
 
     @DeleteMapping("/api/post/{id}")
     public String deleteBoard(@PathVariable Long id) {
-        boardService.deleteBoard(id);
+        postService.deleteBoard(id);
         return "삭제되었습니다.";
     }
 

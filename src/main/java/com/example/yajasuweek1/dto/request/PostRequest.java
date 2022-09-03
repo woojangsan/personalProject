@@ -3,7 +3,7 @@ package com.example.yajasuweek1.dto.request;
 import lombok.Getter;
 
 @Getter
-public class BoardRequest {
+public class PostRequest {
 
     private Long id;
     private String title;

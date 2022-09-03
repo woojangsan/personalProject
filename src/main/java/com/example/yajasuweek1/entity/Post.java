@@ -1,16 +1,14 @@
 package com.example.yajasuweek1.entity;
 
-import com.example.yajasuweek1.dto.request.BoardRequest;
+import com.example.yajasuweek1.dto.request.PostRequest;
 import com.example.yajasuweek1.dto.request.UpdateRequest;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Entity
-public class Board {
+public class Post {
 
     @GeneratedValue (strategy = GenerationType.IDENTITY) //1개씩 추가되는거
     @Id
@@ -25,14 +23,14 @@ public class Board {
     private String password;
 
 
-    public Board(BoardRequest boardRequest) {
-        this.title = boardRequest.getTitle();
-        this.author = boardRequest.getAuthor();
-        this.content = boardRequest.getContent();
-        this.password = boardRequest.getPassword();
+    public Post(PostRequest postRequest) {
+        this.title = postRequest.getTitle();
+        this.author = postRequest.getAuthor();
+        this.content = postRequest.getContent();
+        this.password = postRequest.getPassword();
     }
 
-    public Board() {
+    public Post() {
 
     }
     //생성자를 만들어준 이유는 Service 로직에서 new연산자로 객체를 생성했기 때문인데 boardRequest의 정보들을 받는다고 되어있을 때

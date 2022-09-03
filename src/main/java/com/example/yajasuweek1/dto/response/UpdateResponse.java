@@ -1,6 +1,6 @@
 package com.example.yajasuweek1.dto.response;
 
-import com.example.yajasuweek1.entity.Board;
+import com.example.yajasuweek1.entity.Post;
 
 public class UpdateResponse {
 
@@ -10,9 +10,9 @@ public class UpdateResponse {
     private String title;
     private String content;
 
-    public UpdateResponse(Board updatedBoard) {
-        this.title = updatedBoard.getTitle();
-        this.content = updatedBoard.getContent();
+    public UpdateResponse(Post updatedPost) {
+        this.title = updatedPost.getTitle();
+        this.content = updatedPost.getContent();
     }
 
 

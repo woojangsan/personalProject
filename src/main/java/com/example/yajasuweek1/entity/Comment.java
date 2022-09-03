@@ -2,13 +2,11 @@ package com.example.yajasuweek1.entity;
 
 import com.example.yajasuweek1.dto.request.CommentRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,12 +25,12 @@ public class Comment{
     @JsonIgnore
     @JoinColumn(name = "board_id", nullable = false)
     @ManyToOne
-    private Board board;
+    private Post post;
 
 
-    public Comment(Board board, CommentRequest request) {
+    public Comment(Post post, CommentRequest request) {
         this.comment = request.getComment();
-        this.board = board;
+        this.post = post;
     }
 
 
