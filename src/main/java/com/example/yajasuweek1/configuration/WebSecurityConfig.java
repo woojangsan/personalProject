@@ -69,8 +69,9 @@ public class WebSecurityConfig {
 
         http
                 .authorizeHttpRequests((authz) -> authz
-                        .antMatchers("/user/home").permitAll() // 로그인,회원가입은 토큰없이도 가능
+//                        .antMatchers("/user/home").permitAll() // 로그인,회원가입은 토큰없이도 가능
                         // 나머지 어떤 요청이든 '인증' 필요
+                        .antMatchers("/**").permitAll()
                         .anyRequest().authenticated());
 
         http.headers()

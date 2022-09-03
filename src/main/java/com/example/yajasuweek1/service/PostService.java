@@ -22,8 +22,10 @@ public class PostService {
     }
 
 
+    @Transactional
     public void createBoard(PostRequest postRequest) {
-        postRepository.save(new Post(postRequest));
+        Post post = new Post(postRequest);
+        postRepository.save(post);
     }
 
     public List<?> getBoard() {
