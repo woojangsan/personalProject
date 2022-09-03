@@ -14,8 +14,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://picboy.czwa1zqemqal.ap-northeast-2.rds.amazonaws.com/picboy?serverTimezone=Asia/Seoul
-    username: ${{ secret.AWS_RDS_USERNAME }}
-    password: ${{ secret.AWS_RDS_PASSWORD }}
+    username: picboy #${{ secret.AWS_RDS_USERNAME }}
+    password: Dnr:4fkdgo! #${{ secret.AWS_RDS_PASSWORD }}
 
   jpa:
     hibernate:
