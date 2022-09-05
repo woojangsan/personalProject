@@ -3,13 +3,13 @@ name: CI-CD
 on:
   push:
     branches:
-      - master
+      - main
 
 env:
   S3_BUCKET_NAME: yongwookbucket
-  RESOURCE_PATH: ./src/main/resources/application.properties
-  CODE_DEPLOY_APPLICATION_NAME: yongwookcode-deploy
-  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: yongwook-server
+    RESOURCE_PATH: ./src/main/resources/application.properties
+    CODE_DEPLOY_APPLICATION_NAME: yongwookcode-deploy
+    CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: yongwook-server
 
 jobs:
   build:
