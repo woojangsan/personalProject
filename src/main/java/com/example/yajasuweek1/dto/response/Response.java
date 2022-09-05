@@ -19,4 +19,6 @@ public class Response<T> {
     public static <T> Response<T> fail(String code, String message) {
         return new Response<>(false,null);
     }
+
+
 }

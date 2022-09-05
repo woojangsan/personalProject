@@ -2,9 +2,8 @@ spring:
   profiles:
     active: -prod
 
+---
 
-#---
-#
-#spring:
-#  profiles:
-#    active: local
+spring:
+  profiles:
+    active: local
