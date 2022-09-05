@@ -32,3 +32,5 @@ spring:
   output: # output 색깔이 이뻐짐
     ansi:
       enabled: always
+jwt:
+  secret: ${ secrets.AWS_SECRET }
